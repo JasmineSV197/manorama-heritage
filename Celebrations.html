@@ -9,53 +9,15 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-/* REVIEW FORM */
 
-.review-form{
-    max-width:600px;
-    margin:0 auto 40px;
-    display:flex;
-    flex-direction:column;
-    gap:15px;
-}
-
-.review-form input,
-.review-form select,
-.review-form textarea{
-    padding:14px;
-    border:none;
-    border-radius:12px;
-    font-size:16px;
-    outline:none;
-    background:white;
-    box-shadow:0 4px 10px rgba(0,0,0,0.1);
-    font-family:"Times New Roman", Times, serif;
-}
-
-.review-form textarea{
-    min-height:120px;
-    resize:none;
-}
-
-.review-form button{
-    background:#1b4332;
-    color:white;
-    border:none;
-    padding:14px;
-    border-radius:30px;
-    font-size:17px;
-    cursor:pointer;
-    transition:0.3s;
-    font-weight:bold;
-}
-
-.review-form button:hover{
-    background:#2d6a4f;
-}
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
@@ -103,7 +65,6 @@ nav{
     flex-wrap:nowrap;
     overflow-x:auto;
     padding:10px;
-    scroll-behavior:smooth;
 }
 
 nav::-webkit-scrollbar{
@@ -128,28 +89,12 @@ nav a{
     padding:6px 12px;
     border-radius:50px;
     white-space:nowrap;
-    position:relative;
     transition:0.3s;
 }
 
 nav a:hover{
     background:#d8f3dc;
     color:#1b4332;
-}
-
-nav a::after{
-    content:"";
-    position:absolute;
-    width:0%;
-    height:2px;
-    left:0;
-    bottom:0;
-    background:#d8f3dc;
-    transition:0.3s;
-}
-
-nav a:hover::after{
-    width:100%;
 }
 
 /* HERO */
@@ -251,6 +196,48 @@ nav a:hover::after{
     margin-bottom:40px;
 }
 
+.review-form{
+    max-width:600px;
+    margin:0 auto 40px;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.review-form input,
+.review-form select,
+.review-form textarea{
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    font-size:16px;
+    outline:none;
+    background:white;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    font-family:"Times New Roman", Times, serif;
+}
+
+.review-form textarea{
+    min-height:120px;
+    resize:none;
+}
+
+.review-form button{
+    background:#1b4332;
+    color:white;
+    border:none;
+    padding:14px;
+    border-radius:30px;
+    font-size:17px;
+    cursor:pointer;
+    transition:0.3s;
+    font-weight:bold;
+}
+
+.review-form button:hover{
+    background:#2d6a4f;
+}
+
 .review-container{
     display:flex;
     justify-content:center;
@@ -286,7 +273,7 @@ nav a:hover::after{
     line-height:1.7;
 }
 
-/* COOKIE BOX */
+/* COOKIE */
 
 .cookie-box{
     position:fixed;
@@ -319,11 +306,6 @@ nav a:hover::after{
     border-radius:30px;
     cursor:pointer;
     font-weight:bold;
-    transition:0.3s;
-}
-
-.cookie-btn:hover{
-    background:#2d6a4f;
 }
 
 /* CHATBOT */
@@ -355,14 +337,16 @@ nav a:hover::after{
     position:fixed;
     bottom:95px;
     right:20px;
-    width:340px;
-    max-width:90%;
+    width:350px;
+    max-width:92%;
+    height:500px;
     background:white;
     border-radius:20px;
     overflow:hidden;
     box-shadow:0 10px 35px rgba(0,0,0,0.3);
     display:none;
     z-index:1000;
+    flex-direction:column;
 }
 
 .chatbot-header{
@@ -374,10 +358,11 @@ nav a:hover::after{
 }
 
 .chatbot-body{
-    height:320px;
+    flex:1;
     overflow-y:auto;
     padding:15px;
     background:#f7fffa;
+    scroll-behavior:smooth;
 }
 
 .bot-message,
@@ -417,7 +402,7 @@ nav a:hover::after{
     border:none;
     background:#1b4332;
     color:white;
-    padding:0 18px;
+    padding:0 20px;
     cursor:pointer;
 }
 
@@ -471,7 +456,7 @@ footer a{
     text-decoration:none;
 }
 
-/* ANIMATIONS */
+/* ANIMATION */
 
 .fade-in{
     opacity:0;
@@ -504,12 +489,34 @@ footer a{
     }
 }
 
+/* MOBILE */
+
+@media(max-width:768px){
+
+.review-card{
+width:100%;
+max-width:340px;
+}
+
+.images img{
+width:100%;
+max-width:340px;
+height:220px;
+}
+
+.chatbot{
+right:10px;
+bottom:90px;
+width:95%;
+height:75vh;
+}
+
+}
+
 </style>
 </head>
 
 <body>
-
-<!-- HEADER -->
 
 <header>
 
@@ -529,13 +536,9 @@ footer a{
 
 </header>
 
-<!-- HERO -->
-
 <section class="hero">
 <h2>Celebrate Life’s Most Beautiful Moments With Elegance & Joy ✨</h2>
 </section>
-
-<!-- GALLERY -->
 
 <section class="gallery fade-in">
 
@@ -553,29 +556,21 @@ footer a{
 
 </section>
 
-<!-- DETAILS -->
-
 <section class="details fade-in">
 
 <h2>About Celebrations</h2>
 
 <p>
-At MANORAMA HERITAGE, every celebration becomes a timeless memory. From grand weddings and receptions to birthdays, anniversaries, engagement ceremonies, and festive gatherings, our venue is thoughtfully designed to create magical experiences for every occasion.
+At MANORAMA HERITAGE, every celebration becomes a timeless memory.
+From weddings to anniversaries and parties, every event shines beautifully here ✨
 </p>
 
 <p>
-Blending elegant ambiance with natural beauty, our celebration spaces offer the perfect atmosphere for both intimate moments and grand events. Beautiful décor, spacious surroundings, and a peaceful environment together create an unforgettable setting for your special day.
-</p>
-
-<p>
-Whether under sparkling lights at night or amidst vibrant daytime décor, every event hosted here carries warmth, beauty, and joy.
+Elegant decorations, spacious surroundings, peaceful ambience,
+and warm hospitality create unforgettable moments for your special day.
 </p>
 
 </section>
-
-<!-- REVIEWS -->
-
-<!-- REVIEWS -->
 
 <section class="reviews fade-in">
 
@@ -599,11 +594,9 @@ Whether under sparkling lights at night or amidst vibrant daytime décor, every 
 
 </div>
 
-<div class="review-container" id="reviewContainer">
-</div>
+<div class="review-container" id="reviewContainer"></div>
 
 </section>
-<!-- FOOTER -->
 
 <footer>
 
@@ -616,8 +609,8 @@ Whether under sparkling lights at night or amidst vibrant daytime décor, every 
 </p>
 
 <p>
-<a href="https://wa.me/919300036913">WhatsApp</a> |
-<a href="https://instagram.com/manorama_heritage">Instagram</a>
+<a href="https://wa.me/919300036913" target="_blank">WhatsApp</a> |
+<a href="https://instagram.com/manorama_heritage" target="_blank">Instagram</a>
 </p>
 
 <p>Director: Mr. Amogh Sharma</p>
@@ -626,14 +619,14 @@ Whether under sparkling lights at night or amidst vibrant daytime décor, every 
 
 </footer>
 
-<!-- COOKIE POLICY -->
+<!-- COOKIE -->
 
 <div class="cookie-box" id="cookieBox">
 
 <h3>🍪 Cookie Policy</h3>
 
 <p>
-We use cookies to improve your browsing experience, analyze website traffic, and provide a smoother experience across all devices.
+We use cookies to improve your browsing experience and provide better services.
 </p>
 
 <button class="cookie-btn" onclick="acceptCookies()">Accept</button>
@@ -656,7 +649,7 @@ MANORAMA AI Assistant
 
 <div class="bot-message">
 Hello 👋 Welcome to MANORAMA HERITAGE.<br><br>
-Ask me about bookings, lawn, hall, parking, location, decorations, or events ✨
+Ask me about bookings, lawn, hall, parking, decorations or events ✨
 </div>
 
 </div>
@@ -680,11 +673,21 @@ Ask me about bookings, lawn, hall, parking, location, decorations, or events ✨
 <img class="modal-content" id="zoomedImg">
 </div>
 
-<!-- SCRIPTS -->
-
 <script>
 
-/* FADE IN */
+/* PAGE LOAD */
+
+window.onload = function(){
+
+if(localStorage.getItem("cookiesAccepted")){
+document.getElementById("cookieBox").style.display = "none";
+}
+
+loadReviews();
+
+}
+
+/* FADE */
 
 const observer = new IntersectionObserver(entries => {
 entries.forEach(entry => {
@@ -701,10 +704,14 @@ observer.observe(el);
 /* COOKIE */
 
 function acceptCookies(){
+
+localStorage.setItem("cookiesAccepted", "yes");
+
 document.getElementById("cookieBox").style.display = "none";
+
 }
 
-/* IMAGE ZOOM */
+/* IMAGE MODAL */
 
 const modal = document.getElementById("imageModal");
 const modalImg = document.getElementById("zoomedImg");
@@ -737,11 +744,11 @@ function toggleChatbot(){
 
 const bot = document.getElementById("chatbot");
 
-if(bot.style.display === "block"){
+if(bot.style.display === "flex"){
 bot.style.display = "none";
 }
 else{
-bot.style.display = "block";
+bot.style.display = "flex";
 }
 
 }
@@ -759,7 +766,7 @@ chatBody.innerHTML += `
 <div class="user-message">${text}</div>
 `;
 
-let reply = "Please contact us on WhatsApp at 9300036913 for more details 😊";
+let reply = "Please contact us on WhatsApp at 9300036913 😊";
 
 const msg = text.toLowerCase();
 
@@ -768,27 +775,23 @@ reply = "We are located beside Sarthak Solitaire, Vidya Sagar School Road, Bicho
 }
 
 else if(msg.includes("parking")){
-reply = "Yes 🚗 We provide spacious parking for guests during all events.";
+reply = "Yes 🚗 We provide spacious parking for guests.";
 }
 
 else if(msg.includes("booking") || msg.includes("book")){
-reply = "You can book directly through WhatsApp at 9300036913 ✨";
+reply = "Bookings are available through WhatsApp at 9300036913 ✨";
 }
 
 else if(msg.includes("hall")){
-reply = "Our elegant indoor hall is perfect for receptions, parties, and ceremonies 💫";
+reply = "Our indoor hall is perfect for receptions and celebrations 💫";
 }
 
 else if(msg.includes("lawn")){
-reply = "Our lush green lawn is ideal for weddings and outdoor celebrations 🌿";
+reply = "Our lush green lawn is ideal for outdoor weddings 🌿";
 }
 
-else if(msg.includes("capacity") || msg.includes("guests")){
-reply = "We can comfortably host both intimate gatherings and large celebrations 🎉";
-}
-
-else if(msg.includes("decor") || msg.includes("decoration")){
-reply = "Yes ✨ Decoration arrangements can be customized according to your event theme.";
+else if(msg.includes("decor")){
+reply = "Yes ✨ Decorations can be customized according to your event theme.";
 }
 
 else if(msg.includes("hello") || msg.includes("hi")){
@@ -809,8 +812,6 @@ input.value = "";
 
 }
 
-/* ENTER KEY */
-
 document.getElementById("userInput").addEventListener("keypress", function(e){
 
 if(e.key === "Enter"){
@@ -818,7 +819,8 @@ sendMessage();
 }
 
 });
-/* ADD REVIEW */
+
+/* REVIEWS */
 
 function addReview(){
 
@@ -831,23 +833,53 @@ alert("Please fill all fields 😊");
 return;
 }
 
-const reviewContainer = document.getElementById("reviewContainer");
+const reviewData = {
+name,
+rating,
+text
+};
 
-const reviewCard = document.createElement("div");
-reviewCard.classList.add("review-card");
+let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
 
-reviewCard.innerHTML = `
-<h3>${name}</h3>
-<div class="stars">${rating}</div>
-<p>${text}</p>
-`;
+reviews.unshift(reviewData);
 
-reviewContainer.prepend(reviewCard);
+localStorage.setItem("reviews", JSON.stringify(reviews));
+
+displayReview(reviewData);
 
 document.getElementById("reviewName").value = "";
 document.getElementById("reviewText").value = "";
 
 }
+
+function displayReview(review){
+
+const reviewContainer = document.getElementById("reviewContainer");
+
+const reviewCard = document.createElement("div");
+
+reviewCard.classList.add("review-card");
+
+reviewCard.innerHTML = `
+<h3>${review.name}</h3>
+<div class="stars">${review.rating}</div>
+<p>${review.text}</p>
+`;
+
+reviewContainer.prepend(reviewCard);
+
+}
+
+function loadReviews(){
+
+let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
+
+reviews.forEach(review => {
+displayReview(review);
+});
+
+}
+
 </script>
 
 </body>
