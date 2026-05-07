@@ -60,16 +60,16 @@ margin:5px 0 15px;
 /* NAV */
 
 nav{
+    width:100%;
     display:flex;
     justify-content:center;
     align-items:center;
-    gap:20px;
+    gap:18px;
 
-    flex-wrap:nowrap;
     overflow-x:auto;
+    flex-wrap:nowrap;
 
-    padding:10px;
-    width:100%;
+    padding:12px 10px;
 
     scrollbar-width:none;
 }
@@ -78,27 +78,32 @@ nav::-webkit-scrollbar{
     display:none;
 }
 
-@media(max-width:768px){
-    nav{
-        justify-content:flex-start;
-    }
-}
-
 nav a{
     color:#d8f3dc;
     text-decoration:none;
     font-size:18px;
     font-weight:bold;
-    padding:6px 14px;
+
+    padding:8px 16px;
     border-radius:50px;
+
     white-space:nowrap;
-    transition:0.3s;
     flex-shrink:0;
+
+    transition:0.3s;
 }
 
 nav a:hover{
     background:#d8f3dc;
     color:#1b4332;
+}
+
+@media(max-width:768px){
+
+nav{
+justify-content:flex-start;
+}
+
 }
 
 /* HERO */
@@ -501,20 +506,23 @@ opacity:1;
 
 <body>
 
+<!-- HEADER -->
+
 <header>
 
 <img src="LOGO (2).png" alt="Logo" class="logo-img">
 
 <h1>MANORAMA HERITAGE</h1>
+
 <p>Celebrate • Connect • Cherish</p>
 
 <nav>
-<a href="index.html">Home</a>
-<a href="lawn.html">Lawn</a>
-<a href="hall.html">Hall</a>
-<a href="parking.html">Parking</a>
-<a href="celebrations.html">Celebrations</a>
-<a href="location.html">Location</a>
+    <a href="index.html">Home</a>
+    <a href="lawn.html">Lawn</a>
+    <a href="hall.html">Hall</a>
+    <a href="parking.html">Parking</a>
+    <a href="celebrations.html">Celebrations</a>
+    <a href="location.html">Location</a>
 </nav>
 
 </header>
