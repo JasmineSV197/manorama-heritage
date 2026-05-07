@@ -60,58 +60,45 @@ margin:5px 0 15px;
 /* NAV */
 
 nav{
-display:flex;
-justify-content:center;
-gap:20px;
-flex-wrap:nowrap;
-overflow-x:auto;
-padding:10px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:20px;
+
+    flex-wrap:nowrap;
+    overflow-x:auto;
+
+    padding:10px;
+    width:100%;
+
+    scrollbar-width:none;
 }
 
 nav::-webkit-scrollbar{
-display:none;
-}
-
-nav{
-scrollbar-width:none;
+    display:none;
 }
 
 @media(max-width:768px){
-nav{
-justify-content:flex-start;
-}
+    nav{
+        justify-content:flex-start;
+    }
 }
 
 nav a{
-color:#d8f3dc;
-text-decoration:none;
-font-size:18px;
-font-weight:bold;
-padding:6px 12px;
-border-radius:50px;
-white-space:nowrap;
-transition:0.3s;
-position:relative;
+    color:#d8f3dc;
+    text-decoration:none;
+    font-size:18px;
+    font-weight:bold;
+    padding:6px 14px;
+    border-radius:50px;
+    white-space:nowrap;
+    transition:0.3s;
+    flex-shrink:0;
 }
 
 nav a:hover{
-background:#d8f3dc;
-color:#1b4332;
-}
-
-nav a::after{
-content:"";
-position:absolute;
-width:0%;
-height:2px;
-left:0;
-bottom:0;
-background:#d8f3dc;
-transition:0.3s;
-}
-
-nav a:hover::after{
-width:100%;
+    background:#d8f3dc;
+    color:#1b4332;
 }
 
 /* HERO */
