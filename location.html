@@ -8,7 +8,49 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
+/* REVIEW FORM */
 
+.review-form{
+    max-width:600px;
+    margin:0 auto 40px;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.review-form input,
+.review-form select,
+.review-form textarea{
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    font-size:16px;
+    outline:none;
+    background:white;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    font-family:"Times New Roman", Times, serif;
+}
+
+.review-form textarea{
+    min-height:120px;
+    resize:none;
+}
+
+.review-form button{
+    background:#1b4332;
+    color:white;
+    border:none;
+    padding:14px;
+    border-radius:30px;
+    font-size:17px;
+    cursor:pointer;
+    transition:0.3s;
+    font-weight:bold;
+}
+
+.review-form button:hover{
+    background:#2d6a4f;
+}
 *{
     margin:0;
     padding:0;
@@ -424,36 +466,31 @@ Bicholi Mardana, Indore (M.P.)
 
 </section>
 
+<!-- REVIEWS -->
+
 <section class="reviews fade-in">
 
 <h2>Guest Reviews ⭐</h2>
 
-<div class="review-container">
+<div class="review-form">
 
-<div class="review-card">
-<div class="stars">★★★★★</div>
-<p>
-Beautiful venue with peaceful surroundings and excellent arrangements.
-</p>
-<h3>- Aarav Sharma</h3>
+<input type="text" id="reviewName" placeholder="Your Name">
+
+<select id="reviewRating">
+<option value="★★★★★">★★★★★</option>
+<option value="★★★★☆">★★★★☆</option>
+<option value="★★★☆☆">★★★☆☆</option>
+<option value="★★☆☆☆">★★☆☆☆</option>
+<option value="★☆☆☆☆">★☆☆☆☆</option>
+</select>
+
+<textarea id="reviewText" placeholder="Write your review..."></textarea>
+
+<button onclick="addReview()">Submit Review</button>
+
 </div>
 
-<div class="review-card">
-<div class="stars">★★★★★</div>
-<p>
-Amazing experience! Spacious venue and very elegant atmosphere.
-</p>
-<h3>- Priya Verma</h3>
-</div>
-
-<div class="review-card">
-<div class="stars">★★★★★</div>
-<p>
-Perfect location for weddings and events. Guests loved the ambiance.
-</p>
-<h3>- Rohan Mehta</h3>
-</div>
-
+<div class="review-container" id="reviewContainer">
 </div>
 
 </section>
@@ -602,6 +639,36 @@ entry.target.classList.add('show');
 document.querySelectorAll('.fade-in').forEach(el => {
 observer.observe(el);
 });
+    /* ADD REVIEW */
+
+function addReview(){
+
+const name = document.getElementById("reviewName").value.trim();
+const rating = document.getElementById("reviewRating").value;
+const text = document.getElementById("reviewText").value.trim();
+
+if(name === "" || text === ""){
+alert("Please fill all fields 😊");
+return;
+}
+
+const reviewContainer = document.getElementById("reviewContainer");
+
+const reviewCard = document.createElement("div");
+reviewCard.classList.add("review-card");
+
+reviewCard.innerHTML = `
+<h3>${name}</h3>
+<div class="stars">${rating}</div>
+<p>${text}</p>
+`;
+
+reviewContainer.prepend(reviewCard);
+
+document.getElementById("reviewName").value = "";
+document.getElementById("reviewText").value = "";
+
+}
 
 </script>
 
