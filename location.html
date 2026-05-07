@@ -73,6 +73,7 @@ body{
 header{
     background:#1b4332;
     padding:20px;
+    overflow:hidden;
 }
 
 .logo-img{
@@ -94,12 +95,23 @@ header p{
 }
 
 nav{
+    width:100%;
     display:flex;
-    justify-content:center;
+    align-items:center;
+    justify-content:flex-start;
+
     gap:18px;
-    flex-wrap:nowrap;
+
     overflow-x:auto;
-    padding:15px 10px 5px;
+    overflow-y:hidden;
+
+    flex-wrap:nowrap;
+
+    padding:12px 14px;
+
+    -webkit-overflow-scrolling:touch;
+    scroll-behavior:smooth;
+
     scrollbar-width:none;
 }
 
@@ -110,12 +122,19 @@ nav::-webkit-scrollbar{
 nav a{
     color:#d8f3dc;
     text-decoration:none;
-    font-weight:bold;
+
     font-size:18px;
-    padding:8px 15px;
-    border-radius:30px;
-    transition:0.3s ease;
+    font-weight:bold;
+
+    padding:8px 16px;
+
+    border-radius:50px;
+
     white-space:nowrap;
+
+    flex-shrink:0;
+
+    transition:0.3s;
 }
 
 nav a:hover{
