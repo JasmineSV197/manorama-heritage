@@ -1,567 +1,933 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>MANORAMA HERITAGE</title>
 
 <style>
-body {
-    margin: 0;
-    font-family: "Times New Roman", Times, serif;
-    background:  #eef7f1;
-    color: #0f3d2e;
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
-h1, h2, h3 {
-    color: #eef7f1;
+
+html{
+    scroll-behavior:smooth;
 }
+
+body{
+    font-family:"Times New Roman", Times, serif;
+    background:#eef7f1;
+    color:#0f3d2e;
+    animation:fadePage 1s ease;
+}
+
+/* PAGE FADE */
+@keyframes fadePage{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
 /* HEADER */
-header {
-    background: #1b4332;
-    color: white;
-    text-align: center;
-    padding: 15px 10px;
-}
-.header-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-.logo-img {
-    width: 300px;
-    height: auto;
-}
-header h1 {
-    color: #d8f3dc;
-   font-size: 36px;
-    letter-spacing: 2px;
-}
-header p {
-    color: #b7e4c7;
-   font-size: 20px;
-    letter-spacing: 2px;
-  margin: 2px 0 20px;
-margin: 5px 0 10px;
-}
-nav {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    padding: 10px;
-    scroll-behavior: smooth;
+header{
+    background:#1b4332;
+    color:white;
+    text-align:center;
+    padding:20px 10px;
 }
 
-@media (max-width: 768px) {
-    nav {
-        justify-content: flex-start;
+.logo-img{
+    width:280px;
+    max-width:90%;
+    height:auto;
+}
+
+header h1{
+    color:#d8f3dc;
+    font-size:clamp(28px,5vw,42px);
+    letter-spacing:2px;
+}
+
+header p{
+    color:#b7e4c7;
+    font-size:clamp(15px,3vw,20px);
+    letter-spacing:2px;
+    margin-top:8px;
+}
+
+/* NAVBAR */
+nav{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    padding:15px 10px;
+    scrollbar-width:none;
+}
+
+nav::-webkit-scrollbar{
+    display:none;
+}
+
+nav a{
+    color:#d8f3dc;
+    text-decoration:none;
+    font-size:17px;
+    font-weight:bold;
+    padding:8px 14px;
+    border-radius:30px;
+    white-space:nowrap;
+    position:relative;
+    transition:0.3s ease;
+}
+
+nav a:hover{
+    background:#d8f3dc;
+    color:#1b4332;
+}
+
+nav a::after{
+    content:"";
+    position:absolute;
+    width:0%;
+    height:2px;
+    left:0;
+    bottom:0;
+    background:#d8f3dc;
+    transition:0.3s;
+}
+
+nav a:hover::after{
+    width:100%;
+}
+
+@media(max-width:768px){
+    nav{
+        justify-content:flex-start;
     }
-}
-
-nav::-webkit-scrollbar {
-    display: none;
-}
-
-nav {
-    scrollbar-width: none;
-}
-nav {
-    max-width: 100%;
-}
-nav a {
-    color: #d8f3dc;
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: bold;
-    padding: 6px 12px;
-    border-radius: 50px;
-    white-space: nowrap;
-}
-nav a {
-    white-space: nowrap;
-}
-nav a:hover {
-    background: #d8f3dc;
-    color: white;
-}
-.tagline {
-    font-style: italic;
-    color: #d8f3dc;
 }
 
 /* HERO */
-.hero {
-    min-height: 70vh;
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-                url('hero.jpg') center/cover no-repeat;
+.hero{
+    min-height:75vh;
+    background:
+    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+    url('hero.jpg') center/cover no-repeat;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-
-    padding: clamp(40px, 8vw, 80px) 20px;
-    color: white;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:40px 20px;
 }
 
-.hero h2 {
-    font-size: 26px;
-    max-width: 800px;
-    line-height: 1.3;
+.hero h2{
+    color:white;
+    max-width:900px;
+    line-height:1.4;
+    font-size:clamp(28px,5vw,50px);
+    animation:slideUp 1.2s ease;
+}
+
+@keyframes slideUp{
+    from{
+        opacity:0;
+        transform:translateY(50px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.book-btn{
+    margin-top:30px;
+    display:inline-block;
+    padding:15px 34px;
+    background:#1b4332;
+    color:white;
+    text-decoration:none;
+    font-size:18px;
+    font-weight:bold;
+    border-radius:50px;
+    transition:0.3s ease;
+    position:relative;
+    overflow:hidden;
+}
+
+.book-btn:hover{
+    background:#2d6a4f;
+    transform:scale(1.05);
+}
+
+.book-btn::after{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:0%;
+    height:100%;
+    background:rgba(255,255,255,0.2);
+    transition:0.4s;
+}
+
+.book-btn:hover::after{
+    width:100%;
 }
 
 /* INTRO */
-.intro {
-    padding: 30px;
-    text-align: center;
-    background: #eef7f1;
+.intro{
+    padding:60px 20px;
+    text-align:center;
 }
 
-/* SECTIONS */
-.explore {
-    padding: 40px;
-    text-align: center;
+.intro p{
+    max-width:900px;
+    margin:auto;
+    line-height:1.8;
+    font-size:18px;
 }
 
-.cards {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    flex-wrap: wrap;
+/* EXPLORE */
+.explore{
+    padding:60px 20px;
+    text-align:center;
 }
 
-.card {
-    background: rgba(255,255,255,0.2);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    border: 1px solid rgba(255,255,255,0.3);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-text-align: center;
-overflow: hidden; 
-width: 260px;  
+.explore h2{
+    font-size:38px;
+    margin-bottom:40px;
+    color:#081c15;
 }
 
-.card img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-display: block;
+.cards{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:25px;
 }
 
-.card h3 {
-    padding: 15px;
-    color: #081c15;
-margin: 0;
+.cards a{
+    text-decoration:none;
 }
 
-.card:hover {
-    transform: scale(1.05);
+.card{
+    width:280px;
+    background:rgba(255,255,255,0.25);
+    backdrop-filter:blur(10px);
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,0.12);
+    transition:0.4s ease;
 }
 
-/* ABOUT */
-.about {
-    background: #eef7f1;
-    padding: 40px;
-    text-align: center;
+.card:hover{
+    transform:translateY(-10px) scale(1.04);
+    box-shadow:0 20px 40px rgba(0,0,0,0.2);
 }
 
-/* CONTACT */
-.contact {
-    padding: 40px;
-    text-align: center;
-    background: #1b4332;
+.card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+    display:block;
+}
+
+.card h3{
+    padding:18px;
+    color:#081c15;
+    font-size:24px;
+}
+
+/* WHY CHOOSE */
+.about{
+    padding:60px 20px;
+    text-align:center;
+}
+
+.about h2{
+    font-size:38px;
+    margin-bottom:25px;
+    color:#081c15;
+}
+
+.about p{
+    font-size:20px;
+    margin:15px 0;
+}
+
+/* REVIEWS */
+.reviews{
+    padding:60px 20px;
+    background:#d8f3dc;
+    text-align:center;
+}
+
+.reviews h2{
+    font-size:38px;
+    margin-bottom:40px;
+}
+
+.review-boxes{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:25px;
+}
+
+.review{
+    background:white;
+    width:300px;
+    padding:25px;
+    border-radius:18px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+}
+
+.review h3{
+    color:#1b4332;
+    margin-bottom:10px;
+}
+
+.stars{
+    color:gold;
+    font-size:20px;
+    margin-bottom:15px;
+}
+
+/* COOKIE */
+.cookie-box{
+    position:fixed;
+    bottom:20px;
+    left:20px;
+    background:white;
+    padding:18px;
+    width:320px;
+    border-radius:18px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    z-index:9999;
+}
+
+.cookie-box h3{
+    color:#1b4332;
+    margin-bottom:10px;
+}
+
+.cookie-box p{
+    font-size:14px;
+    line-height:1.6;
+    margin-bottom:15px;
+}
+
+.cookie-box button{
+    background:#1b4332;
+    color:white;
+    border:none;
+    padding:10px 18px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.cookie-box button:hover{
+    background:#2d6a4f;
 }
 
 /* FOOTER */
-footer {
-    background: #081c15;
-    color: white;
-    padding: 30px;
-    text-align: center;
+footer{
+    background:#081c15;
+    color:white;
+    padding:40px 20px;
+    text-align:center;
 }
 
-footer a {
-    color: #00ffcc;
-    text-decoration: none;
-    margin: 5px;
-}
-.book-btn {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 14px 30px;
-    background: #1b4332;   /* bottle green */
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: bold;
-    border-radius: 30px;
-    transition: 0.3s ease;
+footer p{
+    margin:12px 0;
+    line-height:1.6;
 }
 
-.book-btn:hover {
-    background: #2d6a4f;
-}
-.whatsapp-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #25D366;
-    color: white;
-    font-size: 24px;
-    padding: 15px;
-    border-radius: 50%;
-    text-decoration: none;
+footer a{
+    color:#00ffcc;
+    text-decoration:none;
 }
 
-
-.card {
-    transition: all 0.3s ease;
+/* WHATSAPP */
+.whatsapp-btn{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#25D366;
+    color:white;
+    font-size:26px;
+    width:60px;
+    height:60px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:50%;
+    text-decoration:none;
+    z-index:9999;
+    animation:pulse 1.5s infinite;
 }
 
-.card:hover {
-    transform: translateY(-5px) scale(1.03);
-}
-/* ✨ FADE-IN ANIMATION */
-.fade-in {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 0.8s ease;
+@keyframes pulse{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.1);}
+    100%{transform:scale(1);}
 }
 
-.fade-in.show {
-    opacity: 1;
-    transform: translateY(0);
+/* FADE-IN */
+.fade-in{
+    opacity:0;
+    transform:translateY(40px);
+    transition:all 0.8s ease;
 }
 
-/* ✨ HERO TEXT ENTRY */
-.hero h2 {
-    animation: slideUp 1.2s ease forwards;
+.fade-in.show{
+    opacity:1;
+    transform:translateY(0);
 }
 
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(50px);
+/* PAGE TRANSITION */
+.page-transition{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:#1b4332;
+    top:0;
+    left:0;
+    z-index:9998;
+    transform:scaleY(0);
+    transform-origin:top;
+    transition:0.6s ease;
+}
+
+.page-transition.active{
+    transform:scaleY(1);
+}
+
+/* AI CHATBOT */
+.chatbot-toggle{
+    position:fixed;
+    bottom:95px;
+    right:20px;
+    width:60px;
+    height:60px;
+    background:#1b4332;
+    color:white;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:28px;
+    cursor:pointer;
+    box-shadow:0 8px 20px rgba(0,0,0,0.2);
+    z-index:9999;
+    transition:0.3s ease;
+}
+
+.chatbot-toggle:hover{
+    transform:scale(1.1);
+    background:#2d6a4f;
+}
+
+.chatbot-box{
+    position:fixed;
+    bottom:170px;
+    right:20px;
+    width:340px;
+    max-height:500px;
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    display:none;
+    flex-direction:column;
+    box-shadow:0 15px 40px rgba(0,0,0,0.25);
+    z-index:9999;
+}
+
+.chatbot-header{
+    background:#1b4332;
+    color:white;
+    padding:15px;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.chatbot-messages{
+    padding:15px;
+    height:320px;
+    overflow-y:auto;
+    background:#eef7f1;
+}
+
+.bot-message,
+.user-message{
+    margin-bottom:12px;
+    padding:12px 15px;
+    border-radius:14px;
+    max-width:85%;
+    line-height:1.5;
+}
+
+.bot-message{
+    background:#d8f3dc;
+    color:#081c15;
+}
+
+.user-message{
+    background:#1b4332;
+    color:white;
+    margin-left:auto;
+}
+
+.chatbot-input{
+    display:flex;
+    border-top:1px solid #ddd;
+}
+
+.chatbot-input input{
+    flex:1;
+    border:none;
+    padding:14px;
+    outline:none;
+    font-size:15px;
+}
+
+.chatbot-input button{
+    background:#1b4332;
+    color:white;
+    border:none;
+    padding:0 20px;
+    cursor:pointer;
+}
+
+.chatbot-input button:hover{
+    background:#2d6a4f;
+}
+
+@media(max-width:500px){
+
+    .chatbot-box{
+        width:92%;
+        right:4%;
+        bottom:160px;
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+
+    .cookie-box{
+        width:90%;
+        left:5%;
     }
 }
 
-/* ✨ BUTTON GLOW */
-.book-btn {
-    position: relative;
-    overflow: hidden;
-}
-
-.book-btn::after {
-    content: "";
-    position: absolute;
-    width: 0%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: rgba(255,255,255,0.2);
-    transition: 0.4s;
-}
-
-.book-btn:hover::after {
-    width: 100%;
-}
-
-/* ✨ CARD PREMIUM HOVER */
-.card {
-    transition: all 0.4s ease;
-}
-
-.card:hover {
-    transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-}
-
-/* ✨ NAV LINK ANIMATION */
-nav a {
-    position: relative;
-}
-
-nav a::after {
-    content: "";
-    position: absolute;
-    width: 0%;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background: #d8f3dc;
-    transition: 0.3s;
-}
-
-nav a:hover::after {
-    width: 100%;
-}
-
-/* ✨ WHATSAPP PULSE */
-.whatsapp-btn {
-    animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
-}
-
-/* ✨ PAGE LOAD FADE */
-body {
-    animation: fadePage 1s ease;
-}
-
-@keyframes fadePage {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-.cursor-glow {
-    position: fixed;
-    width: 120px;
-    height: 120px;
-    background: radial-gradient(circle, rgba(0,255,200,0.4), transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-    transition: transform 0.05s linear;
-}
-.particles {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    overflow: hidden;
-    z-index: -1;
-}
-
-.particles span {
-    position: absolute;
-    display: block;
-    width: 5px;
-    height: 5px;
-    background: rgba(0,255,200,0.3);
-    animation: float 10s linear infinite;
-    border-radius: 50%;
-}
-
-@keyframes float {
-    from {
-        transform: translateY(100vh) scale(0);
-    }
-    to {
-        transform: translateY(-10vh) scale(1);
-    }
-}
-.page-transition {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: #1b4332;
-    top: 0;
-    left: 0;
-    z-index: 9998;
-    transform: scaleY(0);
-    transform-origin: top;
-    transition: 0.6s ease;
-}
-
-.page-transition.active {
-    transform: scaleY(1);
-}
 </style>
 </head>
 
 <body>
+
 <div class="page-transition"></div>
-<div class="particles"></div>
-<div class="cursor-glow"></div>
+
 <!-- HEADER -->
 <header>
-    
-        <img src="LOGO (2).png" alt="Logo" class="logo-img">
 
-        <div>
-            <h1>MANORAMA HERITAGE</h1>
-            <p>Celebrate • Connect • Cherish</p>
-        </div>
-    </div>
+    <img src="LOGO (2).png" alt="Logo" class="logo-img">
+
+    <h1>MANORAMA HERITAGE</h1>
+
+    <p>Celebrate • Connect • Cherish</p>
 
     <nav>
         <a href="index.html">Home</a>
         <a href="lawn.html">Lawn</a>
         <a href="hall.html">Hall</a>
         <a href="parking.html">Parking</a>
-<a href="celebrations.html">Celebrations</a>
- <a href="location.html">Location</a>
+        <a href="celebrations.html">Celebrations</a>
+        <a href="location.html">Location</a>
     </nav>
+
 </header>
 
 <!-- HERO -->
-<div class="hero">
-    <h2>Where Guests Become Family; Family Finds Peace...</h2>
-<a href="https://wa.me/919300036913" class="book-btn">Book Now</a>
-</div>
+<section class="hero">
+
+    <h2>
+        Where Guests Become Family; Family Finds Peace...
+    </h2>
+
+    <a href="https://wa.me/919300036913" class="book-btn">
+        Book Now
+    </a>
+
+</section>
 
 <!-- INTRO -->
-<div class="intro">
-<div class="intro fade-in">
+<section class="intro fade-in">
+
     <p>
         Nestled in serene greenery, MANORAMA HERITAGE offers the perfect setting for unforgettable celebrations.
         From elegant indoor gatherings to vibrant outdoor events, our venue blends nature with comfort
         to create moments worth cherishing.
     </p>
-</div>
+
+</section>
 
 <!-- EXPLORE -->
-<div class="explore">
-<div class="explore fade-in">
+<section class="explore fade-in">
+
     <h2>Explore Our Spaces</h2>
 
     <div class="cards">
 
         <a href="lawn.html">
-           <div class="card">
-    <img src="images/lawn.jpg" alt="Lawn">
-    <h3>Lawn</h3>
-</div>
+            <div class="card">
+                <img src="images/lawn.jpg" alt="Lawn">
+                <h3>Lawn</h3>
+            </div>
         </a>
 
         <a href="hall.html">
-         <a href="hall.html">
-    <div class="card">
-        <img src="images/hall.jpg" alt="Hall">
-        <h3>Hall</h3>
-    </div>
-</a>
+            <div class="card">
+                <img src="images/hall.jpg" alt="Hall">
+                <h3>Hall</h3>
+            </div>
+        </a>
 
-<a href="parking.html">
-    <div class="card">
-        <img src="images/parking.jpg" alt="Parking">
-        <h3>Parking</h3>
-    </div>
-</a>
-<a href="celebrations.html">
-    <div class="card">
-        <img src="images/event3.jpg" alt="Event">
-        <h3>Events</h3>
-    </div>
-</a>
+        <a href="parking.html">
+            <div class="card">
+                <img src="images/parking.jpg" alt="Parking">
+                <h3>Parking</h3>
+            </div>
+        </a>
+
+        <a href="celebrations.html">
+            <div class="card">
+                <img src="images/event3.jpg" alt="Events">
+                <h3>Celebrations</h3>
+            </div>
+        </a>
 
     </div>
-</div>
-<div class="about">
-<div class="about fade-in">
+
+</section>
+
+<!-- WHY CHOOSE -->
+<section class="about fade-in">
+
     <h2>Why Choose Us</h2>
+
     <p>🌿 Lush Green Surroundings</p>
     <p>🏛️ Elegant & Spacious Hall</p>
     <p>🚗 Ample Parking Space</p>
     <p>🎉 Perfect for Weddings & Events</p>
-</div>
-<!-- ABOUT -->
-<div class="about">
-    <h2>About Us</h2>
-    <p>
-        MANORAMA HERITAGE is a beautifully designed venue offering a blend of nature and elegance,
-        perfect for hosting memorable events and celebrations.
-    </p>
-</div>
+
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews fade-in">
+
+    <h2>Guest Reviews</h2>
+
+    <div class="review-boxes">
+
+        <div class="review">
+            <div class="stars">★★★★★</div>
+            <h3>Beautiful Venue</h3>
+            <p>
+                Amazing ambience and peaceful environment.
+                Perfect for weddings and family functions.
+            </p>
+        </div>
+
+        <div class="review">
+            <div class="stars">★★★★★</div>
+            <h3>Excellent Service</h3>
+            <p>
+                Spacious lawn, elegant hall and very supportive management.
+            </p>
+        </div>
+
+        <div class="review">
+            <div class="stars">★★★★★</div>
+            <h3>Memorable Experience</h3>
+            <p>
+                Everything was perfectly arranged and beautifully maintained.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
 <!-- FOOTER -->
 <footer>
-    <p>📍 Manorama Heritage, Besides Sarthak Solitaire, Vidya Sagar School Road, Bicholi Mardana, Indore (M.P.)</p>
-    <p>📞 9300036913 | 📧 [Email]</p>
 
     <p>
-       <a href="https://wa.me/9300036913">WhatsApp</a> |
-       <a href="https://instagram.com/yourusername">Instagram</a> |
-       <a href="https://facebook.com/yourpage">Facebook</a>
+        📍 Manorama Heritage, Besides Sarthak Solitaire,
+        Vidya Sagar School Road, Bicholi Mardana, Indore (M.P.)
+    </p>
+
+    <p>
+        📞 9300036913
+    </p>
+
+    <p>
+        📧 manoramaheritage@gmail.com
+    </p>
+
+    <p>
+        <a href="https://wa.me/919300036913">WhatsApp</a> |
+        <a href="https://instagram.com/">Instagram</a>
     </p>
 
     <p>Director: Mr. Amogh Sharma</p>
+
     <p>© 2026 MANORAMA HERITAGE. All rights reserved.</p>
+
 </footer>
-<div class="cookie">
-    This website uses cookies to improve your experience.
-    <button onclick="this.parentElement.style.display='none'">Accept</button>
+
+<!-- COOKIE BOX -->
+<div class="cookie-box" id="cookieBox">
+
+    <h3>🍪 Cookie Policy</h3>
+
+    <p>
+        This website uses cookies to improve your browsing experience,
+        analyze traffic, and enhance website performance.
+    </p>
+
+    <button onclick="acceptCookies()">
+        Accept
+    </button>
+
 </div>
+
+<!-- WHATSAPP -->
 <a href="https://wa.me/919300036913" class="whatsapp-btn">
     <i class="fab fa-whatsapp"></i>
 </a>
+
+<!-- CHATBOT -->
+<div class="chatbot-toggle" onclick="toggleChatbot()">
+🤖
+</div>
+
+<div class="chatbot-box" id="chatbot">
+
+    <div class="chatbot-header">
+        MANORAMA AI Assistant
+    </div>
+
+    <div class="chatbot-messages" id="chatMessages">
+
+        <div class="bot-message">
+            Hello 👋 Welcome to MANORAMA HERITAGE.<br><br>
+
+            Ask me about:
+            <br>• Booking
+            <br>• Lawn
+            <br>• Hall
+            <br>• Parking
+            <br>• Location
+            <br>• Events
+            <br>• Contact
+        </div>
+
+    </div>
+
+    <div class="chatbot-input">
+
+        <input
+        type="text"
+        id="userInput"
+        placeholder="Ask something...">
+
+        <button onclick="sendMessage()">
+            ➤
+        </button>
+
+    </div>
+
+</div>
+
+<!-- FADE-IN -->
 <script>
+
 const observer = new IntersectionObserver(entries => {
+
     entries.forEach(entry => {
+
         if(entry.isIntersecting){
             entry.target.classList.add('show');
         }
+
     });
+
 });
 
 document.querySelectorAll('.fade-in').forEach(el => {
     observer.observe(el);
 });
+
 </script>
+
+<!-- PAGE TRANSITION -->
 <script>
-const btn = document.querySelector('.book-btn');
 
-btn.addEventListener('mousemove', e => {
-    const rect = btn.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width/2;
-    const y = e.clientY - rect.top - rect.height/2;
-
-    btn.style.transform = `translate(${x*0.2}px, ${y*0.2}px)`;
-});
-
-btn.addEventListener('mouseleave', () => {
-    btn.style.transform = `translate(0,0)`;
-});
-</script>
-<script>
-const glow = document.querySelector('.cursor-glow');
-
-document.addEventListener('mousemove', e => {
-    glow.style.left = e.clientX + 'px';
-    glow.style.top = e.clientY + 'px';
-});
-</script>
-<script>
-const particles = document.querySelector('.particles');
-
-for(let i=0; i<40; i++){
-    let span = document.createElement('span');
-    span.style.left = Math.random()*100 + '%';
-    span.style.animationDuration = (5 + Math.random()*10) + 's';
-    particles.appendChild(span);
-}
-</script>
-<script>
 const links = document.querySelectorAll('a');
 const transition = document.querySelector('.page-transition');
 
 links.forEach(link => {
+
     link.addEventListener('click', function(e){
+
         const target = this.getAttribute('href');
+
         if(target && target.includes('.html')){
+
             e.preventDefault();
+
             transition.classList.add('active');
 
             setTimeout(() => {
                 window.location.href = target;
             }, 500);
+
         }
+
     });
+
 });
+
 </script>
+
+<!-- COOKIE -->
+<script>
+
+function acceptCookies(){
+    document.getElementById("cookieBox").style.display = "none";
+}
+
+</script>
+
+<!-- CHATBOT -->
+<script>
+
+function toggleChatbot(){
+
+    const bot = document.getElementById("chatbot");
+
+    if(bot.style.display === "flex"){
+        bot.style.display = "none";
+    }
+
+    else{
+        bot.style.display = "flex";
+    }
+}
+
+function sendMessage(){
+
+    const input = document.getElementById("userInput");
+    const messages = document.getElementById("chatMessages");
+
+    let text = input.value.trim();
+
+    if(text === "") return;
+
+    // USER
+    const userDiv = document.createElement("div");
+    userDiv.className = "user-message";
+    userDiv.innerHTML = text;
+
+    messages.appendChild(userDiv);
+
+    // BOT
+    const botDiv = document.createElement("div");
+    botDiv.className = "bot-message";
+
+    let reply =
+    "Please contact us on WhatsApp for detailed information ✨";
+
+    const msg = text.toLowerCase();
+
+    if(msg.includes("book")){
+
+        reply =
+        "You can book MANORAMA HERITAGE through WhatsApp 📞 +91 9300036913";
+    }
+
+    else if(msg.includes("lawn")){
+
+        reply =
+        "Our lawn is spacious, green and perfect for weddings, receptions and celebrations 🌿";
+    }
+
+    else if(msg.includes("hall")){
+
+        reply =
+        "Our elegant indoor hall is ideal for parties, family functions and premium events 🏛️";
+    }
+
+    else if(msg.includes("parking")){
+
+        reply =
+        "We provide ample parking space for guests with smooth accessibility 🚗";
+    }
+
+    else if(msg.includes("location")){
+
+        reply =
+        "We are located at Bicholi Mardana, Indore near Sarthak Solitaire 📍";
+    }
+
+    else if(msg.includes("contact")){
+
+        reply =
+        "You can contact us at 📞 9300036913";
+    }
+
+    else if(msg.includes("event")){
+
+        reply =
+        "We host weddings, receptions, birthdays, corporate events and many more 🎉";
+    }
+
+    else if(msg.includes("hello") || msg.includes("hi")){
+
+        reply =
+        "Hello 👋 How may I help you today?";
+    }
+
+    setTimeout(() => {
+
+        botDiv.innerHTML = reply;
+
+        messages.appendChild(botDiv);
+
+        messages.scrollTop = messages.scrollHeight;
+
+    }, 500);
+
+    input.value = "";
+
+}
+
+document.getElementById("userInput")
+.addEventListener("keypress", function(e){
+
+    if(e.key === "Enter"){
+        sendMessage();
+    }
+
+});
+
+</script>
+
 </body>
 </html>
