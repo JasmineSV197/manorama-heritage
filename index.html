@@ -10,7 +10,49 @@
 <title>MANORAMA HERITAGE</title>
 
 <style>
+/* REVIEW FORM */
 
+.review-form{
+    max-width:600px;
+    margin:0 auto 40px;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.review-form input,
+.review-form select,
+.review-form textarea{
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    font-size:16px;
+    outline:none;
+    background:white;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    font-family:"Times New Roman", Times, serif;
+}
+
+.review-form textarea{
+    min-height:120px;
+    resize:none;
+}
+
+.review-form button{
+    background:#1b4332;
+    color:white;
+    border:none;
+    padding:14px;
+    border-radius:30px;
+    font-size:17px;
+    cursor:pointer;
+    transition:0.3s;
+    font-weight:bold;
+}
+
+.review-form button:hover{
+    background:#2d6a4f;
+}
 *{
     margin:0;
     padding:0;
@@ -629,38 +671,32 @@ footer a{
 </section>
 
 <!-- REVIEWS -->
+<!-- REVIEWS -->
+
 <section class="reviews fade-in">
 
-    <h2>Guest Reviews</h2>
+<h2>Guest Reviews ⭐</h2>
 
-    <div class="review-boxes">
+<div class="review-form">
 
-        <div class="review">
-            <div class="stars">★★★★★</div>
-            <h3>Beautiful Venue</h3>
-            <p>
-                Amazing ambience and peaceful environment.
-                Perfect for weddings and family functions.
-            </p>
-        </div>
+<input type="text" id="reviewName" placeholder="Your Name">
 
-        <div class="review">
-            <div class="stars">★★★★★</div>
-            <h3>Excellent Service</h3>
-            <p>
-                Spacious lawn, elegant hall and very supportive management.
-            </p>
-        </div>
+<select id="reviewRating">
+<option value="★★★★★">★★★★★</option>
+<option value="★★★★☆">★★★★☆</option>
+<option value="★★★☆☆">★★★☆☆</option>
+<option value="★★☆☆☆">★★☆☆☆</option>
+<option value="★☆☆☆☆">★☆☆☆☆</option>
+</select>
 
-        <div class="review">
-            <div class="stars">★★★★★</div>
-            <h3>Memorable Experience</h3>
-            <p>
-                Everything was perfectly arranged and beautifully maintained.
-            </p>
-        </div>
+<textarea id="reviewText" placeholder="Write your review..."></textarea>
 
-    </div>
+<button onclick="addReview()">Submit Review</button>
+
+</div>
+
+<div class="review-container" id="reviewContainer">
+</div>
 
 </section>
 
@@ -926,6 +962,36 @@ document.getElementById("userInput")
     }
 
 });
+    /* ADD REVIEW */
+
+function addReview(){
+
+const name = document.getElementById("reviewName").value.trim();
+const rating = document.getElementById("reviewRating").value;
+const text = document.getElementById("reviewText").value.trim();
+
+if(name === "" || text === ""){
+alert("Please fill all fields 😊");
+return;
+}
+
+const reviewContainer = document.getElementById("reviewContainer");
+
+const reviewCard = document.createElement("div");
+reviewCard.classList.add("review-card");
+
+reviewCard.innerHTML = `
+<h3>${name}</h3>
+<div class="stars">${rating}</div>
+<p>${text}</p>
+`;
+
+reviewContainer.prepend(reviewCard);
+
+document.getElementById("reviewName").value = "";
+document.getElementById("reviewText").value = "";
+
+}
 
 </script>
 
